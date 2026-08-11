@@ -26,21 +26,19 @@ function showLoader() {
     $('#resultArea').html(`
         <div class="loader-box">
             <div class="spinner"></div>
-            Search ho raha hai... Barah-e-karam intazar karein
+            please wait......Data searching
         </div>
     `);
 }
 
-// Not found message
 function showNotFound() {
-    $('#resultArea').html('<div class="not-found">Data nahi mila! Dobara try karein</div>');
+    $('#resultArea').html('<div class="not-found">ye nmber 2023 ka bd register hua hy please 2023 tk ka number enter kryn</div>');
 }
 
-// Main search function
 async function startSearch() {
     const query = $('#targetInput').val().trim();
     if (!query) {
-        alert('Pehle number ya CNIC likhein!');
+        alert('please enter Cnic or phone Number!');
         return;
     }
 
@@ -61,7 +59,6 @@ async function startSearch() {
     }
 }
 
-// Fallback API
 async function fallbackSearch(query) {
     try {
         const resp2 = await fetch(`https://wasifali-sim-info.netlify.app/api/search?phone=${query}`);

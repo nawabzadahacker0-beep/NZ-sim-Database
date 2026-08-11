@@ -264,9 +264,85 @@
             margin-top: 4px;
             color: #ffe28a;
         }
+
+        .lock-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(1, 65, 28, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lock-box {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px 24px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-top: 6px solid #25D366;
+        }
+
+        .lock-icon {
+            font-size: 45px;
+            color: #25D366;
+            margin-bottom: 12px;
+        }
+
+        .lock-box h2 {
+            color: #01411C;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .lock-box p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-follow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-follow:hover {
+            background: #1ebc57;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
+
+    <div class="lock-overlay" id="lockOverlay">
+        <div class="lock-box">
+            <div class="lock-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Tool Locked!</h2>
+            <p>Please follow my WhatsApp channel to unlock this Tool.</p>
+            <a href="https://whatsapp.com/channel/0029VbB47ttDDmFNztpnZf2m" target="_blank" class="btn-follow" id="followBtn">
+                <i class="fab fa-whatsapp"></i> Follow Channel
+            </a>
+        </div>
+    </div>
 
     <div class="flag-bg">
         <div class="crescent"></div>
@@ -298,5 +374,18 @@
     </div>
 
     <script src="api.js"></script>
+    <script>
+        let hasClickedFollow = false;
+
+        document.getElementById('followBtn').addEventListener('click', function() {
+            hasClickedFollow = true;
+        });
+
+        window.addEventListener('focus', function() {
+            if (hasClickedFollow) {
+                document.getElementById('lockOverlay').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

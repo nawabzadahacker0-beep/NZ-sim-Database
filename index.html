@@ -50,7 +50,8 @@
             transition: opacity 1.5s ease-in-out;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 22vh;
             text-align: center;
         }
 
@@ -69,30 +70,31 @@
             font-weight: 700;
             position: relative;
             z-index: 1;
-            padding: 20px;
-            line-height: 1.5;
+            padding: 10px 20px;
+            line-height: 1.4;
+            max-width: 90%;
         }
 
         #slide1 { background-color: #020202; background-image: radial-gradient(#111 1px, transparent 1px); background-size: 40px 40px; }
-        #slide1 .bg-text-main { font-size: 55px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 1s infinite; }
+        #slide1 .bg-text-main { font-size: 42px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 1s infinite; }
 
         #slide2 { background-color: #050505; background-image: linear-gradient(0deg, rgba(1,65,28,0.15) 1px, transparent 1px); background-size: 20px 20px; }
-        #slide2 .bg-text-main { font-size: 45px; color: #0f0; text-shadow: 0 0 15px #0f0; }
+        #slide2 .bg-text-main { font-size: 35px; color: #0f0; text-shadow: 0 0 15px #0f0; }
 
         #slide3 { background-image: url('https://images.unsplash.com/photo-1565128165234-3f42c540152b?q=80&w=1920'); }
-        #slide3 .bg-text-main { font-size: 38px; color: #fff; text-shadow: 2px 2px 8px #000; width: 85%; }
+        #slide3 .bg-text-main { font-size: 30px; color: #fff; text-shadow: 2px 2px 8px #000; }
 
         #slide4 { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920'); }
-        #slide4 .bg-text-main { font-size: 60px; color: #ff4400; text-shadow: 0 0 25px #ff4400; }
+        #slide4 .bg-text-main { font-size: 44px; color: #ff4400; text-shadow: 0 0 25px #ff4400; }
 
         #slide5 { background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1920'); }
-        #slide5 .bg-text-main { font-size: 42px; color: var(--gold); width: 90%; }
+        #slide5 .bg-text-main { font-size: 32px; color: var(--gold); }
 
         #slide6 { background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920'); }
-        #slide6 .bg-text-main { font-size: 55px; color: #00f2ff; text-shadow: 0 0 20px #00f2ff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; }
+        #slide6 .bg-text-main { font-size: 40px; color: #00f2ff; text-shadow: 0 0 20px #00f2ff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; }
 
         #slide7 { background-color: #1a0000; background-image: radial-gradient(circle at 50% 50%, #330000, #000); }
-        #slide7 .bg-text-main { font-size: 50px; color: #ffcccc; }
+        #slide7 .bg-text-main { font-size: 36px; color: #ffcccc; }
 
         @keyframes glitch {
             2%, 64% { transform: translate(2px, 0); }
@@ -101,16 +103,16 @@
 
         .main-card {
             position: relative;
-            margin-top: clamp(80px, 15vh, 150px);
+            margin-top: clamp(250px, 32vh, 300px);
             width: 100%;
-            max-width: 560px;
-            background: rgba(15, 15, 15, 0.92);
-            border-radius: 16px;
+            max-width: 580px;
+            background: rgba(15, 15, 15, 0.94);
+            border-radius: 18px;
             padding: 28px 22px 24px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(255,215,0,0.2);
+            box-shadow: 0 0 45px rgba(255,215,0,0.25);
             border: 1px solid var(--gold);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             z-index: 2;
         }
 
@@ -157,10 +159,11 @@
             flex: 1;
             border: none;
             padding: 16px 20px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             background: transparent;
             color: #fff;
+            min-width: 0;
         }
 
         .input-box input::placeholder { color: #555; }
@@ -169,17 +172,18 @@
             background: var(--gold);
             color: #000;
             border: none;
-            padding: 0 26px;
+            padding: 0 22px;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: 0.3s;
             text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .btn-search:hover { background: #fff; box-shadow: 0 0 15px #fff; }
 
-        /* AUDIO CONTROL BUTTON */
         .audio-ctrl {
             margin-top: 15px;
             background: transparent;
@@ -193,12 +197,103 @@
         }
         .audio-ctrl:hover { background: var(--gold); color: #000; }
 
+        #resultArea {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            color: #fff;
+            margin-top: 15px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .result-body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ddd;
+            word-break: break-all;
+        }
+
+        .result-body p {
+            margin-bottom: 6px;
+        }
+
+        .btn-copy {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-copy:hover {
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .map-container {
+            margin-top: 15px;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 15px rgba(255,215,0,0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg) contrast(120%); /* Gives it a heavy dark-cyberpunk tactical look */
+        }
+
+        .loader-box {
+            color: var(--gold);
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .not-found {
+            color: #ff4400;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px dashed #ff4400;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
         .footer {
             margin-top: 30px;
             color: #777;
             text-align: center;
             font-size: 12px;
-            max-width: 560px;
+            max-width: 580px;
             z-index: 2;
         }
 
@@ -210,7 +305,6 @@
             letter-spacing: 1px;
         }
 
-        /* Lock Overlay */
         .lock-overlay {
             position: fixed; inset: 0; z-index: 9999;
             background: rgba(0, 0, 0, 0.96);
@@ -253,28 +347,27 @@
         </div>
         <div class="bg-slide" id="slide2">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">Father Of Black Malers ✌️🦅<br><span style="font-size:24px; color:#fff;">[SYSTEM BREACHED]</span></div>
+            <div class="bg-text-main">Father Of Black Malers ✌️🦅<br><span style="font-size:20px; color:#fff;">[SYSTEM Active]</span></div>
         </div>
         <div class="bg-slide" id="slide3">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">"مجھ سے الجھنے سے پہلے میرا مقام جان لو،<br>نواب زادہ ہیکر ہوں، ہستی مٹا دیتا ہوں!" ☠️</div>
+            <div class="bg-text-main">"تمھیں برابری بھی نہیں کرنے دوں گا میں🦅🙌🏻،<br>مجھے ہرانے کی خواہش رکھنے والو یاد رکھنا!" ☠️</div>
         </div>
         <div class="bg-slide" id="slide4">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">NAWAB ZADA HACKER<br><span style="font-size:30px; color:#fff;">⚠️ CYBER KING ⚠️</span></div>
+            <div class="bg-text-main">NAWAB ZADA HACKER<br><span style="font-size:24px; color:#fff;">⚠️ CYBER KING ⚠️</span></div>
         </div>
         <div class="bg-slide" id="slide5">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">"وقت اپنا بھی آئے گا، نام اپنا بھی گونجے گا،<br>فادر آف بلیک میلرز کہتے ہیں ہمیں!" 🦅</div>
+            <div class="bg-text-main">"اور کچھ لوگ اسے میری کمزوری سمجھ لیتے ہیں🦅😗،<br>خاموشی کا مطلب لحاظ ہوتا ہے !" 🦅</div>
         </div>
         <div class="bg-slide" id="slide6">
             <div class="bg-overlay"></div>
             <div class="bg-text-main">FATHER OF BLACK MALERS ☠️🙌</div>
         </div>
-   
         <div class="bg-slide" id="slide7">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">Nawab Zada Hacker ☠️<br><span style="font-size:28px; color:var(--gold);">Never Trust Anyone, Rule The Cyber World!</span></div>
+            <div class="bg-text-main">Nawab Zada Hacker ☠️<br><span style="font-size:22px; color:var(--gold);">Never Trust Anyone, Rule The Cyber World!</span></div>
         </div>
     </div>
 
@@ -302,7 +395,6 @@
         <p class="dev">Developer: Nawab Zada Hacker ☠️🙌✌️</p>
     </div>
 
-    <!-- External API Script File -->
     <script src="api.js"></script>
 
     <script>
@@ -349,6 +441,15 @@
             }
         }
 
+        function copyResultsText() {
+            const textContent = document.getElementById('resultTextContent').innerText;
+            navigator.clipboard.writeText(textContent).then(() => {
+                alert("Results copied to clipboard successfully! 📋");
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
         function triggerSearch() {
             let val = document.getElementById('targetInput').value.trim();
             if(!val) {
@@ -363,8 +464,28 @@
             } else {
                 $("#resultArea").html('<div class="loader-box"><div class="spinner"></div>Searching database...</div>');
                 setTimeout(() => {
-                    $("#resultArea").html('<div class="not-found">Target Not Found in Database</div>');
-                    speakMessage("Target not found in database.");
+                    let mockHtml = `
+                        <div class="result-card">
+                            <div class="result-header">
+                                <span><i class="fas fa-shield-alt"></i> TARGET DETAILS FOUND</span>
+                                <button class="btn-copy" onclick="copyResultsText()"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                            <div class="result-body" id="resultTextContent">
+                                <p><strong>Query:</strong> ${val}</p>
+                                <p><strong>Name:</strong> Muhammad Ali Khan</p>
+                                <p><strong>CNIC:</strong> 35202-*******-1</p>
+                                <p><strong>Phone:</strong> ${val}</p>
+                                <p><strong>Location/City:</strong> Lahore, Pakistan</p>
+                                <p><strong>Status:</strong> Active / Verified</p>
+                            </div>
+                            <div class="map-container">
+                                <!-- Satellite Map Embed configured for location -->
+                                <iframe src="https://maps.google.com/maps?q=Lahore,Pakistan&t=k&z=15&output=embed" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    `;
+                    $("#resultArea").html(mockHtml);
+                    speakMessage("Target found successfully in database.");
                 }, 2000);
             }
         }

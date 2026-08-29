@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nawab ZADA Sim Database</title>
+    <title>Pak Sim Database By Nawab Zada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -22,47 +22,102 @@
             flex-direction: column;
             align-items: center;
             padding: 0 15px 30px;
-            background: var(--green);
+            background: #050505;
         }
 
         .flag-bg {
             position: fixed;
             inset: 0;
             z-index: -3;
-            background: linear-gradient(90deg, #fff 0%, #fff 25%, var(--green) 25%, var(--green) 100%);
+            background: radial-gradient(ellipse at 20% 20%, #0a2e1a 0%, transparent 55%),
+                        radial-gradient(ellipse at 80% 80%, #0e3d22 0%, transparent 55%),
+                        linear-gradient(135deg, #050505 0%, #071a0e 50%, #050505 100%);
             overflow: hidden;
         }
 
-        .crescent {
-            position: absolute;
-            left: 62.5%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 34vmin;
-            height: 34vmin;
-            background: #fff;
-            border-radius: 50%;
-        }
-        .crescent::after {
+        .flag-bg::before {
             content: '';
             position: absolute;
-            top: -4vmin;
-            right: -2vmin;
-            width: 30vmin;
-            height: 30vmin;
-            background: var(--green);
-            border-radius: 50%;
+            width: 140vmax;
+            height: 140vmax;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: conic-gradient(from 0deg,
+                transparent 0%, rgba(255, 215, 0, 0.06) 15%, transparent 30%,
+                rgba(255, 215, 0, 0.08) 50%, transparent 65%,
+                rgba(255, 215, 0, 0.06) 85%, transparent 100%);
+            animation: rotateGlow 25s linear infinite;
         }
 
-        .star {
+        .flag-bg::after {
+            content: '';
             position: absolute;
-            left: 69%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 11vmin;
-            height: 11vmin;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffd700' fill-opacity='0.35'/%3E%3C/svg%3E");
+            animation: drift 60s linear infinite;
+            opacity: 0.8;
         }
-        .star polygon { fill: #fff; }
+
+        @keyframes rotateGlow {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes drift {
+            from { background-position: 0 0; }
+            to { background-position: 600px 600px; }
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+        }
+        .glow-orb.g1 {
+            width: 45vmax; height: 45vmax;
+            top: -15vmax; left: -10vmax;
+            background: radial-gradient(circle, rgba(255,215,0,0.18), transparent 65%);
+            animation: float1 18s ease-in-out infinite alternate;
+        }
+        .glow-orb.g2 {
+            width: 40vmax; height: 40vmax;
+            bottom: -12vmax; right: -8vmax;
+            background: radial-gradient(circle, rgba(1,65,28,0.55), transparent 65%);
+            animation: float2 22s ease-in-out infinite alternate;
+        }
+        .glow-orb.g3 {
+            width: 28vmax; height: 28vmax;
+            top: 40%; left: 60%;
+            background: radial-gradient(circle, rgba(255,215,0,0.12), transparent 65%);
+            animation: float1 26s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes float1 {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(8vmax, 6vmax) scale(1.15); }
+        }
+        @keyframes float2 {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(-8vmax, -6vmax) scale(1.2); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 0 12px 3px rgba(255, 215, 0, 0.7);
+            animation: sparkleFloat 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-90vh) scale(1.4); }
+        }
 
         .flag-overlay {
             position: fixed;
@@ -79,12 +134,12 @@
             z-index: -1;
             width: 100%;
             text-align: center;
-            color: #fff;
+            color: #ffd700;
             font-family: 'Noto Nastaliq Urdu', serif;
             font-size: clamp(30px, 8vw, 100px);
             font-weight: 700;
             white-space: nowrap;
-            text-shadow: 0 6px 30px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4);
+            text-shadow: 0 0 25px rgba(255,215,0,0.45), 0 2px 6px rgba(0,0,0,0.6);
         }
 
         .main-card {
@@ -345,19 +400,24 @@
     </div>
 
     <div class="flag-bg">
-        <div class="crescent"></div>
-        <svg class="star" viewBox="0 0 100 100">
-            <polygon points="50,5 60.1,36.1 92.8,36.1 66.4,55.3 76.4,86.4 50,67.2 23.6,86.4 33.6,55.3 7.2,36.1 39.9,36.1"/>
-        </svg>
+        <div class="glow-orb g1"></div>
+        <div class="glow-orb g2"></div>
+        <div class="glow-orb g3"></div>
+        <div class="sparkle" style="left: 12%; bottom: 0; animation-delay: 0s;"></div>
+        <div class="sparkle" style="left: 28%; bottom: 0; animation-delay: 2s;"></div>
+        <div class="sparkle" style="left: 45%; bottom: 0; animation-delay: 4s;"></div>
+        <div class="sparkle" style="left: 62%; bottom: 0; animation-delay: 1s;"></div>
+        <div class="sparkle" style="left: 78%; bottom: 0; animation-delay: 3s;"></div>
+        <div class="sparkle" style="left: 90%; bottom: 0; animation-delay: 5s;"></div>
     </div>
     <div class="flag-overlay"></div>
-    <div class="flag-text">جشن آزادی مبارک</div>
+    <div class="flag-text">Nawab Zada Hacker</div>
 
     <div class="main-card">
         <div class="logo-circle">
             <i class="fas fa-sim-card"></i>
         </div>
-        <h1>Nawab ZADA Sim Database</h1>
+        <h1>Pak Sim Database</h1>
         <p class="subtitle">only for educatin perposes please don't use wrong</p>
 
         <div class="input-box">

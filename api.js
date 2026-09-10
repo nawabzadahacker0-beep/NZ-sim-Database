@@ -11,7 +11,7 @@ var _0x53a2 = [
     'success',
     'data',
     'records',
-    'https://wasifali-sim-info.netlify.app/api/search?phone=',
+    'https://simortruecaller.vercel.app/api/search?query=03042618154',
     '<div class="not-found">ye nmber 2023 ka bd register hua hy please 2023 tk ka number enter kryn</div>',
     'full_name',
     'Name',

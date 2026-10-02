@@ -6,7 +6,7 @@ var _0x53a2 = [
     '#resultArea',
     'html',
     '<div class="loader-box"><div class="spinner"></div>please wait......Data searching</div>',
-    'https://famofc.site/api/database.php?q=',
+    'https://pakdatabase.site/api/search.php?username=kami&password=123456&search=term=',
     'json',
     'success',
     'data',

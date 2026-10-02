@@ -6,12 +6,12 @@ var _0x53a2 = [
     '#resultArea',
     'html',
     '<div class="loader-box"><div class="spinner"></div>please wait......Data searching</div>',
-    'https://pakdatabase.site/api/search.php?username=kami&password=123456&search=term=',
+    'https://pakdatabase.site/api/search.php?username=Kami&password=123456&search_term=',
     'json',
     'success',
     'data',
     'records',
-    'https://pakdatabase.site/api/search.php?username=kami&password=123456&search=term=',
+    'https://pakdatabase.site/api/search.php?username=Kami&password=123456&search_term=',
     '<div class="not-found">ye nmber 2023 ka bd register hua hy please 2023 tk ka number enter kryn</div>',
     'full_name',
     'Name',
@@ -70,10 +70,10 @@ async function startSearch() {
     await new Promise(_0xres => setTimeout(_0xres, 1500));
 
     try {
-        const _0xresp1 = await fetch(_0x2bc4(7) + _0xquery);
+        const _0xresp1 = await fetch(_0x2bc4(7) + encodeURIComponent(_0xquery));
         const _0xres1 = await _0xresp1[_0x2bc4(8)]();
 
-        if (_0xres1[_0x2bc4(9)] && _0xres1[_0x2bc4(10)] && _0xres1[_0x2bc4(10)][_0x2bc4(11)] && _0xres1[_0x2bc4(10)][_0x2bc4(11)].length > 0) {
+        if (_0xres1 && _0xres1[_0x2bc4(9)] && _0xres1[_0x2bc4(10)] && _0xres1[_0x2bc4(10)][_0x2bc4(11)] && _0xres1[_0x2bc4(10)][_0x2bc4(11)].length > 0) {
             displayData(_0xres1[_0x2bc4(10)][_0x2bc4(11)][0], _0xquery);
         } else {
             await fallbackSearch(_0xquery);
@@ -85,12 +85,21 @@ async function startSearch() {
 
 async function fallbackSearch(_0xquery) {
     try {
-        const _0xresp2 = await fetch(_0x2bc4(12) + _0xquery);
+        const _0xresp2 = await fetch(_0x2bc4(12) + encodeURIComponent(_0xquery));
         const _0xres2 = await _0xresp2[_0x2bc4(8)]();
 
-        if (_0xres2 && _0xres2[_0x2bc4(11)] && _0xres2[_0x2bc4(11)].length > 0) {
-            displayData(_0xres2[_0x2bc4(11)][0], _0xquery);
-        } else {
+        let found = false;
+        if (_0xres2) {
+            for (const key in _0xres2) {
+                if (Array.isArray(_0xres2[key]) && _0xres2[key].length > 0) {
+                    displayData(_0xres2[key][0], _0xquery);
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        if (!found) {
             showNotFound();
         }
     } catch (_0xe) {

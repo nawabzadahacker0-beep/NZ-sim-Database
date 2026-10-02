@@ -51,7 +51,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding-top: 10vh; /* Fixed for better mobile top positioning */
+            padding-top: 10vh;
             text-align: center;
         }
 
@@ -86,7 +86,7 @@
         #slide3 .bg-text-main { font-size: 26px; color: #fff; text-shadow: 2px 2px 8px #000; }
 
         #slide4 { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920'); }
-        #slide4 .bg-text-main { font-size: 38px; color: #ff4400; text-shadow: 0 0 25px #ff4400; }
+        #slide4 .bg-text-main { font-size: 24px; color: #ff4400; text-shadow: 0 0 25px #ff4400; }
 
         #slide5 { background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1920'); }
         #slide5 .bg-text-main { font-size: 28px; color: var(--gold); }
@@ -203,7 +203,7 @@
             text-align: left;
         }
 
-        .result-card {
+        .data-card {
             background: rgba(0, 0, 0, 0.85);
             border: 1px solid rgba(255, 215, 0, 0.4);
             border-radius: 12px;
@@ -213,49 +213,29 @@
             box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
         }
 
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-            font-size: 13px;
-            color: var(--gold);
-            font-weight: bold;
-        }
-
-        .result-body {
+        .info-row {
+            margin-bottom: 8px;
             font-size: 14px;
-            line-height: 1.6;
             color: #ddd;
             word-break: break-all;
         }
 
-        .result-body p {
+        .info-row .label {
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .map-title {
+            color: var(--gold);
+            font-weight: bold;
+            margin-top: 12px;
             margin-bottom: 6px;
-        }
-
-        .btn-copy {
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 5px 12px;
-            font-size: 11px;
-            font-weight: 800;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-
-        .btn-copy:hover {
-            background: #fff;
-            box-shadow: 0 0 10px #fff;
+            font-size: 13px;
         }
 
         .map-container {
-            margin-top: 15px;
+            margin-top: 5px;
             width: 100%;
             height: 200px;
             border-radius: 10px;
@@ -342,14 +322,13 @@
     </div>
 
     <div class="bg-container">
-        <!-- Properly ordered and structured lines -->
         <div class="bg-slide active" id="slide1">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">Nawab Zada Hacker ☠️🙌✌️</div>
+            <div class="bg-text-main">Nawab Zada Hacker ☠️🙌✌️️</div>
         </div>
         <div class="bg-slide" id="slide2">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">Father Of Black Malers ✌️🦅<br><span style="font-size:20px; color:#fff;">[✌️🦅]</span></div>
+            <div class="bg-text-main">Father Of Black Malers ✌️🦅<br><span style="font-size:20px; color:#fff;">[✌️️🦅]</span></div>
         </div>
         <div class="bg-slide" id="slide3">
             <div class="bg-overlay"></div>
@@ -357,7 +336,7 @@
         </div>
         <div class="bg-slide" id="slide4">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">NAWAB ZADA HACKER<br><span style="font-size:24px; color:#fff;">⚠️ CYBER KING ⚠️</span></div>
+            <div class="bg-text-main">NAWAB ZADA HACKER<br><span style="font-size:24px; color:#fff;">⚠️ CYBER KING ⚠️️</span></div>
         </div>
         <div class="bg-slide" id="slide5">
             <div class="bg-overlay"></div>
@@ -443,15 +422,6 @@
             }
         }
 
-        function copyResultsText() {
-            const textContent = document.getElementById('resultTextContent').innerText;
-            navigator.clipboard.writeText(textContent).then(() => {
-                alert("Results copied to clipboard successfully! 📋");
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        }
-
         function triggerSearch() {
             let val = document.getElementById('targetInput').value.trim();
             if(!val) {
@@ -463,31 +433,6 @@
             
             if(typeof startSearch === 'function') {
                 startSearch();
-            } else {
-                $("#resultArea").html('<div class="loader-box"><div class="spinner"></div>Searching database...</div>');
-                setTimeout(() => {
-                    let mockHtml = `
-                        <div class="result-card">
-                            <div class="result-header">
-                                <span><i class="fas fa-shield-alt"></i> TARGET DETAILS FOUND</span>
-                                <button class="btn-copy" onclick="copyResultsText()"><i class="fas fa-copy"></i> Copy</button>
-                            </div>
-                            <div class="result-body" id="resultTextContent">
-                                <p><strong>Query:</strong> ${val}</p>
-                                <p><strong>Name:</strong> Muhammad Ali Khan</p>
-                                <p><strong>CNIC:</strong> 35202-*******-1</p>
-                                <p><strong>Phone:</strong> ${val}</p>
-                                <p><strong>Location/City:</strong> Lahore, Pakistan</p>
-                                <p><strong>Status:</strong> Active / Verified</p>
-                            </div>
-                            <div class="map-container">
-                                <iframe src="https://maps.google.com/maps?q=Lahore,Pakistan&t=k&z=15&output=embed" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    `;
-                    $("#resultArea").html(mockHtml);
-                    speakMessage("Target found successfully in database.");
-                }, 2000);
             }
         }
     </script>

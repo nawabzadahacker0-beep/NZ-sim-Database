@@ -49,6 +49,12 @@ function displayData(_0x1a2b3c, _0x4d5e6f) {
     $(_0x2bc4(4))[_0x2bc4(5)](
         _0x2bc4(28) + _0x1 + _0x2bc4(29) + _0x2 + _0x2bc4(30) + _0x3 + _0x2bc4(31) + _0x4 + _0x2bc4(32) + _0x5 + _0x2bc4(33)
     );
+    if ('speechSynthesis' in window) {
+        let utterance = new SpeechSynthesisUtterance("Target found successfully in database.");
+        utterance.rate = 1.0;
+        utterance.pitch = 0.8; 
+        window.speechSynthesis.speak(utterance);
+    }
 }
 
 function showLoader() {
@@ -67,13 +73,12 @@ async function startSearch() {
     }
 
     showLoader();
-    await new Promise(_0xres => setTimeout(_0xres, 1500));
 
     try {
         const _0xresp1 = await fetch(_0x2bc4(7) + encodeURIComponent(_0xquery));
         const _0xres1 = await _0xresp1[_0x2bc4(8)]();
 
-        if (_0xres1 && _0xres1[_0x2bc4(9)] && _0xres1[_0x2bc4(10)] && Array.isArray(_0xres1[_0x2bc4(10)]) && _0xres1[_0x2bc4(10)].length > 0) {
+        if (_0xres1 && _0xres1[_0x2bc4(10)] && Array.isArray(_0xres1[_0x2bc4(10)]) && _0xres1[_0x2bc4(10)].length > 0) {
             displayData(_0xres1[_0x2bc4(10)][0], _0xquery);
         } else {
             await fallbackSearch(_0xquery);

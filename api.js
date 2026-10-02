@@ -11,7 +11,7 @@ var _0x53a2 = [
     'success',
     'data',
     'records',
-    'https://simortruecaller.vercel.app/api/search?query=03042618154',
+    'https://pakdatabase.site/api/search.php?username=kami&password=123456&search=term=',
     '<div class="not-found">ye nmber 2023 ka bd register hua hy please 2023 tk ka number enter kryn</div>',
     'full_name',
     'Name',

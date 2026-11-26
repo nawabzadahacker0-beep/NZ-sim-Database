@@ -1,4 +1,4 @@
-const API_URL = 'https://junaidv3.freepage.cc/view.php?site=2k25data&q=';
+const API_URL = 'https://wasifali-sim-info.netlify.app/api/search?phone=';
 
 async function startSearch() {
   const query = $('#targetInput').val().trim();

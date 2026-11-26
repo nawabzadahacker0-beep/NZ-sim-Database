@@ -27,285 +27,66 @@
             background-color: #000;
         }
 
-        .bg-container {
-            position: fixed;
-            inset: 0;
-            z-index: -10;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            pointer-events: none;
-        }
+        .bg-container { position: fixed; inset: 0; z-index: -10; width: 100vw; height: 100vh; overflow: hidden; pointer-events: none; }
+        .bg-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 1.5s ease-in-out; display: flex; justify-content: center; align-items: flex-start; padding-top: 10vh; text-align: center; }
+        .bg-slide.active { opacity: 1; }
+        .bg-overlay { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%); }
+        .bg-text-main { font-family: 'Noto Nastaliq Urdu', serif; font-weight: 700; position: relative; z-index: 1; padding: 10px 20px; line-height: 1.8; max-width: 90%; direction: rtl; }
 
-        .bg-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 10vh;
-            text-align: center;
-        }
-
-        .bg-slide.active {
-            opacity: 1;
-        }
-
-        .bg-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%);
-        }
-
-        .bg-text-main {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            padding: 10px 20px;
-            line-height: 1.8; 
-            max-width: 90%;
-            direction: rtl; 
-        }
-
+        /* Individual slide styles (unchanged) … */
         #slide1 { background-color: #020202; background-image: radial-gradient(#111 1px, transparent 1px); background-size: 40px 40px; }
         #slide1 .bg-text-main { font-size: 36px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 1s infinite; }
-
         #slide2 { background-color: #050505; background-image: linear-gradient(0deg, rgba(1,65,28,0.15) 1px, transparent 1px); background-size: 20px 20px; }
         #slide2 .bg-text-main { font-size: 30px; color: #0f0; text-shadow: 0 0 15px #0f0; }
-
         #slide3 { background-image: url('https://images.unsplash.com/photo-1565128165234-3f42c540152b?q=80&w=1920'); }
         #slide3 .bg-text-main { font-size: 26px; color: #fff; text-shadow: 2px 2px 8px #000; }
-
         #slide4 { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920'); }
         #slide4 .bg-text-main { font-size: 24px; color: #ff4400; text-shadow: 0 0 25px #ff4400; }
-
         #slide5 { background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1920'); }
         #slide5 .bg-text-main { font-size: 28px; color: var(--gold); }
-
         #slide6 { background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920'); }
         #slide6 .bg-text-main { font-size: 34px; color: #00f2ff; text-shadow: 0 0 20px #00f2ff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; }
-
         #slide7 { background-color: #1a0000; background-image: radial-gradient(circle at 50% 50%, #330000, #000); }
         #slide7 .bg-text-main { font-size: 30px; color: #ffcccc; }
 
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px, 0); }
-            4%, 60% { transform: translate(-2px, 0); }
-        }
+        @keyframes glitch { 2%,64%{transform:translate(2px,0);} 4%,60%{transform:translate(-2px,0);} }
 
-        .main-card {
-            position: relative;
-            margin-top: clamp(200px, 28vh, 260px);
-            width: 100%;
-            max-width: 580px;
-            background: rgba(15, 15, 15, 0.94);
-            border-radius: 18px;
-            padding: 28px 22px 24px;
-            text-align: center;
-            box-shadow: 0 0 45px rgba(255,215,0,0.25);
-            border: 1px solid var(--gold);
-            backdrop-filter: blur(14px);
-            z-index: 2;
-        }
+        .main-card { position: relative; margin-top: clamp(200px,28vh,260px); width: 100%; max-width: 580px; background: rgba(15,15,15,0.94); border-radius: 18px; padding: 28px 22px 24px; text-align: center; box-shadow: 0 0 45px rgba(255,215,0,0.25); border: 1px solid var(--gold); backdrop-filter: blur(14px); z-index: 2; }
 
-        .logo-circle {
-            width: 68px;
-            height: 68px;
-            margin: 0 auto 12px;
-            background: var(--gold);
-            color: #000;
-            font-size: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px var(--gold);
-        }
+        .logo-circle { width: 68px; height: 68px; margin: 0 auto 12px; background: var(--gold); color: #000; font-size: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px var(--gold); }
+        .main-card h1 { color: var(--gold); font-size: 28px; font-family: 'Arial Black', sans-serif; letter-spacing: 1px; }
+        .subtitle { color: #888; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
 
-        .main-card h1 {
-            color: var(--gold);
-            font-size: 28px;
-            font-family: 'Arial Black', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            color: #888;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        .input-box {
-            display: flex;
-            border: 2px solid var(--gold);
-            border-radius: 40px;
-            overflow: hidden;
-            background: #000;
-            margin-top: 25px;
-            box-shadow: inset 0 0 10px rgba(255,215,0,0.1);
-        }
-
-        .input-box input {
-            flex: 1;
-            border: none;
-            padding: 16px 20px;
-            font-size: 15px;
-            outline: none;
-            background: transparent;
-            color: #fff;
-            min-width: 0;
-        }
-
+        .input-box { display: flex; border: 2px solid var(--gold); border-radius: 40px; overflow: hidden; background: #000; margin-top: 25px; box-shadow: inset 0 0 10px rgba(255,215,0,0.1); }
+        .input-box input { flex: 1; border: none; padding: 16px 20px; font-size: 15px; outline: none; background: transparent; color: #fff; min-width: 0; }
         .input-box input::placeholder { color: #555; }
-
-        .btn-search {
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 0 22px;
-            font-weight: 900;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
+        .btn-search { background: var(--gold); color: #000; border: none; padding: 0 22px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.3s; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
         .btn-search:hover { background: #fff; box-shadow: 0 0 15px #fff; }
 
-        .audio-ctrl {
-            margin-top: 15px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+        .audio-ctrl { margin-top: 15px; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.2s; }
         .audio-ctrl:hover { background: var(--gold); color: #000; }
 
-        #resultArea {
-            margin-top: 20px;
-            text-align: left;
-        }
+        #resultArea { margin-top: 20px; text-align: left; }
 
-        .data-card {
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            color: #fff;
-            margin-top: 15px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-        }
+        .data-card { background: rgba(0,0,0,0.85); border: 1px solid rgba(255,215,0,0.4); border-radius: 12px; padding: 15px; color: #fff; margin-top: 15px; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
+        .info-row { margin-bottom: 8px; font-size: 14px; color: #ddd; word-break: break-all; }
+        .info-row .label { color: var(--gold); font-weight: bold; margin-right: 5px; }
 
-        .info-row {
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #ddd;
-            word-break: break-all;
-        }
+        .map-title { color: var(--gold); font-weight: bold; margin-top: 12px; margin-bottom: 6px; font-size: 13px; }
+        .map-container { margin-top: 5px; width: 100%; height: 200px; border-radius: 10px; overflow: hidden; border: 1px solid var(--gold); box-shadow: 0 0 15px rgba(255,215,0,0.15); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; filter: invert(90%) hue-rotate(180deg) contrast(120%); }
 
-        .info-row .label {
-            color: var(--gold);
-            font-weight: bold;
-            margin-right: 5px;
-        }
+        .loader-box { color: var(--gold); padding: 20px; font-weight: bold; text-align: center; font-size: 14px; }
+        .not-found { color: #ff4400; padding: 15px; font-weight: bold; text-align: center; border: 1px dashed #ff4400; border-radius: 8px; margin-top: 15px; }
+        .footer { margin-top: 30px; color: #777; text-align: center; font-size: 12px; max-width: 580px; z-index: 2; }
+        .footer .dev { font-weight: 700; margin-top: 5px; color: var(--gold); font-size: 13px; letter-spacing: 1px; }
 
-        .map-title {
-            color: var(--gold);
-            font-weight: bold;
-            margin-top: 12px;
-            margin-bottom: 6px;
-            font-size: 13px;
-        }
-
-        .map-container {
-            margin-top: 5px;
-            width: 100%;
-            height: 200px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--gold);
-            box-shadow: 0 0 15px rgba(255,215,0,0.15);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: invert(90%) hue-rotate(180deg) contrast(120%);
-        }
-
-        .loader-box {
-            color: var(--gold);
-            padding: 20px;
-            font-weight: bold;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .not-found {
-            color: #ff4400;
-            padding: 15px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px dashed #ff4400;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .footer {
-            margin-top: 30px;
-            color: #777;
-            text-align: center;
-            font-size: 12px;
-            max-width: 580px;
-            z-index: 2;
-        }
-
-        .footer .dev {
-            font-weight: 700;
-            margin-top: 5px;
-            color: var(--gold);
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        .lock-overlay {
-            position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(10px);
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-        .lock-box {
-            background: #111; border-radius: 18px; padding: 40px 30px;
-            max-width: 400px; width: 100%; text-align: center;
-            box-shadow: 0 0 35px var(--gold); border: 2px solid var(--gold);
-        }
+        .lock-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.96); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .lock-box { background: #111; border-radius: 18px; padding: 40px 30px; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 0 35px var(--gold); border: 2px solid var(--gold); }
         .lock-icon { font-size: 50px; color: var(--gold); margin-bottom: 20px; }
         .lock-box h2 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
         .lock-box p { color: #aaa; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-        .btn-follow {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            background: #25D366; color: #fff; text-decoration: none; padding: 12px 25px;
-            font-size: 16px; font-weight: 700; border-radius: 30px; box-shadow: 0 5px 15px rgba(37,211,102,0.4);
-        }
+        .btn-follow { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #fff; text-decoration: none; padding: 12px 25px; font-size: 16px; font-weight: 700; border-radius: 30px; box-shadow: 0 5px 15px rgba(37,211,102,0.4); }
     </style>
 </head>
 <body>
@@ -332,7 +113,7 @@
         </div>
         <div class="bg-slide" id="slide3">
             <div class="bg-overlay"></div>
-            <div class="bg-text-main">"مجھے ہرانے کی خواہش رکھنے والو یاد رکھنا<br>مھیں برابری بھی نہیں کرنے دوں گا میں🦅🙌🏻☠️</div>
+            <div class="bg-text-main">"مجھے ہرانے کی خواہش رکھنے والو یاد رکھنا<br>مھیں برابری بھی نہیں کرنے دوں گا میں🦅🙌🏻☠️"</div>
         </div>
         <div class="bg-slide" id="slide4">
             <div class="bg-overlay"></div>
@@ -380,10 +161,10 @@
 
     <script>
         let hasClickedFollow = false;
-        document.getElementById('followBtn').addEventListener('click', function() {
+        document.getElementById('followBtn').addEventListener('click', function () {
             hasClickedFollow = true;
         });
-        window.addEventListener('focus', function() {
+        window.addEventListener('focus', function () {
             if (hasClickedFollow) {
                 document.getElementById('lockOverlay').style.display = 'none';
             }
@@ -417,21 +198,21 @@
             if ('speechSynthesis' in window) {
                 let utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 1.0;
-                utterance.pitch = 0.8; 
+                utterance.pitch = 0.8;
                 window.speechSynthesis.speak(utterance);
             }
         }
 
         function triggerSearch() {
             let val = document.getElementById('targetInput').value.trim();
-            if(!val) {
+            if (!val) {
                 speakMessage("Please enter a valid number or cnic");
                 alert("Please enter target details!");
                 return;
             }
             speakMessage("Scanning database for target. Please wait.");
-            
-            if(typeof startSearch === 'function') {
+
+            if (typeof startSearch === 'function') {
                 startSearch();
             }
         }
